@@ -43,8 +43,6 @@ def main():
     # TODO 0: Measures total program runtime by collecting start time
     start_time = time()
 
-    sleep(1)
-
     # TODO 1: Define get_input_args function within the file get_input_args.py
     # This function retrieves 3 Command Line Arguments from user as input from
     # the user running the program from a terminal window. This function returns
@@ -63,7 +61,6 @@ def main():
     # This function creates the results dictionary that contains the results,
     # this dictionary is returned from the function call as the variable results
     results = get_pet_labels(in_arg.dir)
-    print(results)
 
     # Function that checks Pet Images in the results Dictionary using results
     check_creating_pet_image_labels(results)
@@ -76,7 +73,7 @@ def main():
     #             classify_images(in_arg.dir, results, in_arg.arch)
     # Creates Classifier Labels with classifier function, Compares Labels,
     # and adds these results to the results dictionary - results
-    classify_images(None, results, None)
+    classify_images(in_arg.dir, results, in_arg.arch)
 
     # Function that checks Results Dictionary using results
     check_classifying_images(results)

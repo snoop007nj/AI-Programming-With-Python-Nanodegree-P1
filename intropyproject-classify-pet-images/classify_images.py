@@ -66,4 +66,34 @@ def classify_images(images_dir, results_dic, model):
      Returns:
            None - results_dic is mutable data type so no return needed.         
     """
-    None 
+    filenames = []
+    pet_labels = []
+    for filename in results_dic:
+        filenames.append(filename)
+        pet_labels.append(results_dic[filename][0])
+        
+#     print("filenames: {}\n".format(filenames))
+#     print("pet_labels: {}\n".format(pet_labels))
+    
+    classifier_labels = []
+    for filename in filenames:
+        img_path = images_dir + filename
+        classifier_labels.append(classifier(img_path, model))
+        
+#     print("classifier_labels: {}\n".format(classifier_labels))
+        
+    # Populates empty dictionary with both labels &indicates if they match (idx 2)
+    for idx in range (0, len(filenames), 1):            
+        # Determine if pet_labels matches classifier_labels using in operator
+        # - so if pet label is 'in' classifier label it's a match
+        # ALSO since Key already exists because labels were added, append 
+        # value to end of list for idx 2 
+        # if pet image label was FOUND then there is a match 
+        if pet_labels[idx] in classifier_labels[idx]:
+            results_dic[filenames[idx]].append(classifier_labels[idx])
+            results_dic[filenames[idx]].append(1)
+            
+        # if pet image label was NOT found then there is no match
+        else:
+            results_dic[filenames[idx]].append(classifier_labels[idx])
+            results_dic[filenames[idx]].append(0)
