@@ -62,5 +62,28 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
+    
+    print("\n ** Printing Results:")
+    
+    print("CNN model architecture: {}\n".format(model))
+    
+    print("Number of images: {}".format(results_stats_dic['n_images']))
+    
+    print("Number of dog images: {}".format(results_stats_dic['n_dogs_img']))
+        
+    print("Number of 'Not-a' Dog images: {}\n".format(results_stats_dic['n_notdogs_img']))
+    
+    print("% Correct 'Not-a' Dog: {0:0.2f}".format(results_stats_dic['pct_correct_notdogs']))
+    
+    print("% Correct Dogs: {0:0.2f}".format(results_stats_dic['pct_correct_dogs']))
+    
+    print("% Correct Breed: {0:0.2f}".format(results_stats_dic['pct_correct_breed']))
+    
+    if print_incorrect_dogs:
+        print("% Incorrect Dogs: {0:0.2f}".format(100 - results_stats_dic['pct_correct_dogs']))
+            
+    if print_incorrect_breed:
+        print("% Incorrect Breed: {0:0.2f}".format(100 - results_stats_dic['pct_correct_breed']))
+    
     None
                 

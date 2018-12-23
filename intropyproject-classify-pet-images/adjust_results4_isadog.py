@@ -82,7 +82,8 @@ def adjust_results4_isadog(results_dic, dogfile):
         results_dic[idx].append(0)
         results_dic[idx].append(0)
         for dog_file_list_idx in dog_file_list:
-            if pet_image_label_idx0 in dog_file_list_idx:
-                results_dic[idx][3] = 1
-            if classifier_label_idx1 in dog_file_list_idx:
-                results_dic[idx][4] = 1
+            if 'cat' not in results_dic[idx][0]:
+                if pet_image_label_idx0 in dog_file_list_idx:
+                    results_dic[idx][3] = 1
+                if classifier_label_idx1 in dog_file_list_idx:
+                    results_dic[idx][4] = 1

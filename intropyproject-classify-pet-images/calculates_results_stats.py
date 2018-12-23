@@ -77,6 +77,7 @@ def calculates_results_stats(results_dic):
     number_of_correct_non_dog_matches_c = 0
     number_of_not_dog_images_d = 0
     number_of_correct_breed_matches_e = 0
+    number_of_label_matches_y = 0
     
     for idx in results_dic:
         if results_dic[idx][3] and results_dic[idx][4]:
@@ -93,6 +94,9 @@ def calculates_results_stats(results_dic):
             
         if results_dic[idx][3] and results_dic[idx][2] and results_dic[idx][4]:
             number_of_correct_breed_matches_e += 1    
+            
+        if results_dic[idx][2]:
+            number_of_label_matches_y += 1
             
     results_stats_dic = dict()
     results_stats_dic['n_images'] = number_of_images_z
