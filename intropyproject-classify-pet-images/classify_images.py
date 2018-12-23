@@ -78,7 +78,7 @@ def classify_images(images_dir, results_dic, model):
     classifier_labels = []
     for filename in filenames:
         img_path = images_dir + filename
-        classifier_labels.append(classifier(img_path, model))
+        classifier_labels.append(classifier(img_path, model).lower())
         
 #     print("classifier_labels: {}\n".format(classifier_labels))
         
