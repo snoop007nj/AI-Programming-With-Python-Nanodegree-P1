@@ -63,27 +63,27 @@ def print_results(results_dic, results_stats_dic, model,
            None - simply printing results.
     """    
     
-    print("\n ** Printing Results:")
+    # Prints summary statistics over the run
+    print("\n\n*** Results Summary for CNN Model Architecture", model.upper(),
+          "***")
+    print("{:20}: {:3d}".format("N Images", results_stats_dic['n_images']))
+    print("{:20}: {:3d}".format("N Dog Images", results_stats_dic['n_dogs_img']))        
+    print("{:20}: {:3d}".format("N 'Not-a' Dog Images", results_stats_dic['n_notdogs_img']))  
     
-    print("CNN model architecture: {}\n".format(model))
+    for key in results_stats_dic:
+        if key.startswith('p'):
+            print("{:20}: {:3.1f}".format(key, results_stats_dic[key]))
     
-    print("Number of images: {}".format(results_stats_dic['n_images']))
-    
-    print("Number of dog images: {}".format(results_stats_dic['n_dogs_img']))
-        
-    print("Number of 'Not-a' Dog images: {}\n".format(results_stats_dic['n_notdogs_img']))
-    
-    print("% Correct 'Not-a' Dog: {0:0.2f}".format(results_stats_dic['pct_correct_notdogs']))
-    
-    print("% Correct Dogs: {0:0.2f}".format(results_stats_dic['pct_correct_dogs']))
-    
-    print("% Correct Breed: {0:0.2f}".format(results_stats_dic['pct_correct_breed']))
+#     print("% Correct 'Not-a' Dog: {0:0.2f}".format(results_stats_dic['pct_correct_notdogs']))
+#     
+#     print("% Correct Dogs: {0:0.2f}".format(results_stats_dic['pct_correct_dogs']))
+#     
+#     print("% Correct Breed: {0:0.2f}".format(results_stats_dic['pct_correct_breed']))
+#     
+#     print("% Match Labels: {0:0.2f}".format(results_stats_dic['pct_match']))
     
     if print_incorrect_dogs:
         print("% Incorrect Dogs: {0:0.2f}".format(100 - results_stats_dic['pct_correct_dogs']))
             
     if print_incorrect_breed:
         print("% Incorrect Breed: {0:0.2f}".format(100 - results_stats_dic['pct_correct_breed']))
-    
-    None
-                
