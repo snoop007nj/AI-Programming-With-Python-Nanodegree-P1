@@ -67,27 +67,7 @@ def adjust_results4_isadog(results_dic, dogfile):
     Returns:
            None - results_dic is mutable data type so no return needed.
     """    
-#     dog_file_list = []
-#     with open(dogfile) as dog_file:
-#         for dog in dog_file:
-#             if dog.rstrip().lower() in dog_file_list:
-#                 print("WARNING: {} is duplicated.".format(dog.rstrip().lower()))
-#             else:
-#                 dog_file_list.append(dog.rstrip().lower())
-#                 
-#     for idx in results_dic:
-#         pet_image_label_idx0 = results_dic[idx][0]
-#         classifier_label_idx1 = results_dic[idx][1]
-#         
-#         results_dic[idx].append(0)
-#         results_dic[idx].append(0)
-#         for dog_file_list_idx in dog_file_list:
-#             if 'cat' not in results_dic[idx][0]:
-#                 if pet_image_label_idx0 in dog_file_list_idx:
-#                     results_dic[idx][3] = 1
-#                 if classifier_label_idx1 in dog_file_list_idx:
-#                     results_dic[idx][4] = 1
-
+    
     # Creates dognames dictionary for quick matching to results_dic labels from
     # real answer & classifier's answer
     dognames_dic = dict()

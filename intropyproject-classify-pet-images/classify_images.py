@@ -71,17 +71,12 @@ def classify_images(images_dir, results_dic, model):
     for filename in results_dic:
         filenames.append(filename)
         pet_labels.append(results_dic[filename][0])
-        
-#     print("filenames: {}\n".format(filenames))
-#     print("pet_labels: {}\n".format(pet_labels))
     
     classifier_labels = []
     for filename in filenames:
         img_path = images_dir + filename
-        classifier_labels.append(classifier(img_path, model).lower())
-        
-#     print("classifier_labels: {}\n".format(classifier_labels))
-        
+        classifier_labels.append(classifier(img_path, model).lower().strip())
+
     # Populates empty dictionary with both labels &indicates if they match (idx 2)
     for idx in range (0, len(filenames), 1):            
         # Determine if pet_labels matches classifier_labels using in operator
@@ -90,10 +85,7 @@ def classify_images(images_dir, results_dic, model):
         # value to end of list for idx 2 
         # if pet image label was FOUND then there is a match 
         if pet_labels[idx] in classifier_labels[idx]:
-            results_dic[filenames[idx]].append(classifier_labels[idx])
-            results_dic[filenames[idx]].append(1)
-            
+            results_dic[filenames[idx]].extend((classifier_labels[idx], 1))
         # if pet image label was NOT found then there is no match
         else:
-            results_dic[filenames[idx]].append(classifier_labels[idx])
-            results_dic[filenames[idx]].append(0)
+            results_dic[filenames[idx]].extend((classifier_labels[idx], 0))

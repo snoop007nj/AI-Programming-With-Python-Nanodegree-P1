@@ -51,7 +51,8 @@ def get_pet_labels(image_dir):
     items_in_dic = len(results_dic)
 
     if image_dir:
-        filenames = listdir(image_dir)
+        filenames = [filenames for filenames in listdir(image_dir) if not filenames.startswith('.')]
+        
         for idx in range(0, len(filenames), 1):
             # Sets pet_image variable to a filename
             pet_image = filenames[idx]
